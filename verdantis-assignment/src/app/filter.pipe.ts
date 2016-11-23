@@ -9,8 +9,8 @@ export class FilterPipe implements PipeTransform {
   	if(search === undefined){
   		return value;
   	} 
-  	return value.filter(function(vl){
-  			return vl.name.toLowerCase().contains(search.toLowerCase());
+  	return value.filter(function(vl){   	
+  		return vl.key.toLowerCase().indexOf(search.toLowerCase()) > -1;
   	});
   }
 

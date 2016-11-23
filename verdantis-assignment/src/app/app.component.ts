@@ -30,19 +30,25 @@ export class AppComponent {
 		model:false
 		}
 	},{
+		'Select' : {
+		name: 'Select',				
+		arr:[],
+		model:false
+		}
+	},{
 		'Terxtarea' : {
 		name: 'Terxtarea',				
 		arr:[],
 		model:false
 		}
 	},{
-		'Autocomplete' : {
-		name: 'Autocomplete',				
+		'Date' : {
+		name: 'Date',				
 		arr:[],
 		model:false
 		}
 	}];
-
+	search = '';
 	addItem(e , data){
 		e.stopPropagation();
 		if(data.model == false){
@@ -51,5 +57,30 @@ export class AppComponent {
 			data.arr = [];
 		}		
 	}
+	remove(data){
+		data.model = false;
+		data.arr = [];
+	}
 
+	clearAll() {		
+		for(let obj of this.inputData){
+			for(let key in obj){
+				var val = obj[key];
+				val.model = false;
+				val.arr = [];
+			}
+		}
+		this.search  = '';
+	}
+
+	add(data) {
+		data.arr.push(data.arr.length+1);		
+	}
+
+	minus(data){
+		data.arr.pop();
+		if(data.arr.length < 1){
+			data.model = false;
+		}
+	}
 }

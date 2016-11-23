@@ -3,40 +3,49 @@
     margin: 0 auto
 }
 
-.wrapper .content .left-pane label.checkbox {
+.wrapper .content label.checkbox {
     display: inline-block;
-	margin: 0 0 10px 25px;
-	padding: 0;
+    margin: 0 0 10px 25px;
+    padding: 0;
 }
-.wrapper .content .left-pane input[type=checkbox] {   
+
+input[type=checkbox],
+input[type=radio] {
     --webkit-transform: scale(1.3);
     -moz-transform: scale(1.3);
     -ms-transform: scale(1.3);
     -o-transform: scale(1.3);
-    transform: scale(1.3);	    
+    transform: scale(1.3);
+}
+
+.wrapper .content input[type=checkbox] {
     left: 0;
 }
 
-.lbl{
-	display: inline-block;
-	float: left;
-	padding-right: 40px;
-	position: relative;
-}
- .remove{
-	content: '';
-	display: inline-block;
-	position: absolute;
-	width: 20px;
-	height: 20px;
-	top: 0;
-	right: 18px;
-	background: url('./assets/images/symbols.jpg');
-	cursor: pointer;
+.lbl {
+    display: inline-block;
+    float: left;
+    padding-right: 40px;
+    position: relative;
 }
 
-.remove{
-	background-position: 21px 0;
+.remove {
+    display: inline-block;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 0;
+    right: 15px;
+    background: url('./assets/images/symbols.jpg');
+    cursor: pointer;
+}
+
+.remove {
+    background-position: 21px 0;
+}
+
+.right-bottom input[type="radio"],.right-bottom input[type="checkbox"] {    
+    margin-right: 10px;
 }
 
 .wrapper .footer {
@@ -47,4 +56,68 @@
 .wrapper .footer p {
     padding: 15px;
     margin: 0
+}
+
+.top-pane {
+    background-color: #E5E4E2;
+}
+
+.top-pane .lbl {
+    margin: 10px 0 10px 10px;
+}
+
+.right-bottom {
+    margin-top: 20px;
+}
+
+.headinng p {
+    line-height: 25px;
+    background-color: #ADD8E6;
+    padding-left: 10px;
+    font-weight: bold;
+}
+
+.headinng p span {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.right-bottom .lbl {
+    line-height: 27px;
+    width: 130px;
+    padding-left: 10px;
+}
+.right-bottom select , .right-bottom input[type="text"] , .right-bottom input[type="date"]{
+	height: 25px;
+	width: 180px;
+	padding-left: 5px;	
+	border: 1px solid lightblue;
+}
+.right-bottom textarea{
+	border: 1px solid lightblue;
+	
+}
+.add-remove {
+    padding-top: 1px;
+    margin-right: 250px;
+}
+
+.plus,
+.minus {
+    height: 20px;
+    width: 20px;
+    display: inline-block;
+    background: url('./assets/images/symbols.jpg');
+    cursor: pointer;
+    margin-right: 5px;
+    margin-top: 3px;
+    background-position: 20px 20px;
+}
+
+.plus {
+    background-position: 0px 20px;
+    margin-left: 20px;
+}
+.elm-wrapper{
+	margin-bottom: 10px;
 }

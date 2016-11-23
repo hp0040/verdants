@@ -1,42 +1,112 @@
-
-    <div class="wrapper">    
-     	<nav class="navbar navbar-default">
-     	  <div class="container-fluid">
-     	    <div class="navbar-header">     	      
-     	      <img src="./assets/images/logo.png" height="50" width="200" alt="company logo" class="logo" />
-     	    </div>
-     	    <ul class="nav navbar-nav">
-     	      <li class="active"><a href="javascript:void(0)">Home</a></li>
-     	      <li><a href="javascript:void(0)">About Us</a></li>
-     	      <li><a href="javascript:void(0)">Contact Us</a></li> 
-     	      <li><a href="javascript:void(0)">Services</a></li> 
-     	    </ul>
-     	  </div>
-     	</nav>
-     	<div class="content clearfix">
-     		<div class="col-xs-4 left-pane">
-				<div class="form-group">				 
-				  <input type="search" class="form-control" id="usr" [(ngModel)]="search">
-				</div>
-				<div *ngFor="let data of inputData | keys | filter:search" >
-					<label class="checkbox">					
-					<input type="checkbox" value="" (click)="addItem($event , data.value)" [(ngModel)]=data.value.model> {{data.value.name}} ({{data.value.arr.length}})
-					</label>					
-				</div>
-     		</div>
-     		<div class="col-xs-8">
-     			<div class="top-pane clearfix">
-     				<div class="pull-left"  *ngFor="let data of inputData | keys">
-     					<label class="lbl" *ngIf="data.value.arr.length>0">{{data.value.name}} ({{data.value.arr.length}}) <span class="remove" (click)="remove(data.value)"></span> </label>
-     				</div>
-     			</div>
-     			<div class="right-bottom">
-     				
-     			</div>
-     		</div>
-		</div>
-		<footer class="footer">
-			<p>Copyright © 2016 , Inc. All Rights Reserved.</p>
-		</footer>
-
+<div class="wrapper">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <img src="./assets/images/logo.png" height="50" width="200" alt="company logo" class="logo" />
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="javascript:void(0)">Home</a></li>
+                <li><a href="javascript:void(0)">About Us</a></li>
+                <li><a href="javascript:void(0)">Contact Us</a></li>
+                <li><a href="javascript:void(0)">Services</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="content clearfix">
+        <div class="col-xs-4 left-pane">
+            <div class="form-group">
+                <label class="lbl pull-right" (click)="clearAll()">Clear <span class="remove"></span></label>
+                <input type="search" class="form-control" id="usr" placeholder="search" [(ngModel)]="search">
+            </div>
+            <div *ngFor="let data of inputData | keys | filter:search">
+                <label class="checkbox">
+                    <input type="checkbox" value="" (click)="addItem($event , data.value)" [(ngModel)]=data.value.model> {{data.value.name}} ({{data.value.arr.length}})
+                </label>
+            </div>
+        </div>
+        <div class="col-xs-8">
+            <div class="top-pane clearfix">
+                <div class="pull-left" *ngFor="let data of inputData | keys">
+                    <label class="lbl" *ngIf="data.value.arr.length>0">{{data.value.name}} ({{data.value.arr.length}}) <span class="remove" (click)="remove(data.value)"></span> </label>
+                </div>
+            </div>
+            <div class="right-bottom">
+                <div class="headinng">
+                    <p>What is Added <span>HTML Element</span></p>
+                </div>
+                <div *ngFor="let data of inputData | keys">
+                    <div *ngIf="data.key == 'Textbox'" class="elm-wrapper">
+                        <div *ngFor="let elm of data.value.arr" class="clearfix">
+                            <label class="lbl">{{data.value.name}}</label>
+                            <input type="text" class="pull-left" />
+                            <div class="add-remove pull-right">
+                                <span class="plus" (click)="add(data.value)"></span>
+                                <span class="minus" (click)="minus(data.value)"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="data.key == 'Radio'" class="elm-wrapper">
+                        <div *ngFor="let elm of data.value.arr" class="clearfix">
+                            <label class="lbl">{{data.value.name}}</label>
+                            <label class="pull-left">
+                                <input type="radio" name="radiobtn" />Radio</label>
+                            <div class="add-remove pull-right">
+                                <span class="plus" (click)="add(data.value)"></span>
+                                <span class="minus" (click)="minus(data.value)"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="data.key == 'Checkbox'" class="elm-wrapper">
+                        <div *ngFor="let elm of data.value.arr" class="clearfix">
+                            <label class="lbl">{{data.value.name}}</label>
+                            <label class="pull-left">
+                                <input type="Checkbox" name="radiobtn" />check me</label>
+                            <div class="add-remove pull-right">
+                                <span class="plus" (click)="add(data.value)"></span>
+                                <span class="minus" (click)="minus(data.value)"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="data.key == 'Select'" class="elm-wrapper">
+                        <div *ngFor="let elm of data.value.arr" class="clearfix">
+                            <label class="lbl">{{data.value.name}}</label>
+                            <select>
+                                <option value="">--Select--</option>
+                                <option value="">option 1</option>
+                                <option value="">option 2</option>
+                                <option value="">option 3</option>
+                            </select>
+                            <div class="add-remove pull-right">
+                                <span class="plus" (click)="add(data.value)"></span>
+                                <span class="minus" (click)="minus(data.value)"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="data.key == 'Terxtarea'" class="elm-wrapper">
+                        <div *ngFor="let elm of data.value.arr" class="clearfix">
+                            <label class="lbl">{{data.value.name}}</label>
+                            <textarea cols="22" rows="3"></textarea>
+                            <div class="add-remove pull-right">
+                                <span class="plus" (click)="add(data.value)"></span>
+                                <span class="minus" (click)="minus(data.value)"></span>
+                            </div>
+                        </div>
+                    </div> 
+                    <div *ngIf="data.key == 'Date'" class="elm-wrapper">
+                        <div *ngFor="let elm of data.value.arr" class="clearfix">
+                            <label class="lbl">{{data.value.name}}</label>
+                            <input type="date" />
+                            <div class="add-remove pull-right">
+                                <span class="plus" (click)="add(data.value)"></span>
+                                <span class="minus" (click)="minus(data.value)"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    <footer class="footer">
+        <p>Copyright © 2016 , Inc. All Rights Reserved.</p>
+    </footer>
+</div>
